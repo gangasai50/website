@@ -1022,7 +1022,7 @@ html.is-animating .transition-fade .mry-loading-curtain {
 	}
 }
 
-/* Slider Navigation */
+/*  */
 
 .mry-slider-pagination-frame {
 	height: 100vh;
@@ -1156,7 +1156,7 @@ html.is-animating .transition-fade .mry-loading-curtain {
 	color: #e1e1e1;
 }
 
-/* Slider Navigation after 768px */
+/*  after 768px */
 
 @media (max-width: 768px) {
 	.mry-slider-pagination-frame, .mry-slider-progress-bar-frame {
@@ -1170,7 +1170,7 @@ html.is-animating .transition-fade .mry-loading-curtain {
 	}
 }
 
-/* Slider Navigation after 590px */
+/*  after 590px */
 
 @media (max-width: 590px) {
 	.mry-slider-nav-panel {
