@@ -17,12 +17,12 @@
 		var timeout = 1000
 		$('html').addClass('is-animating');
 
-		$(".mry-loader").animate({
+		$(".site-loader").animate({
 			width: "100%"
 		}, timeout);
 
 		setTimeout(function () {
-			$('.mry-preloader').removeClass('mry-active');
+			$('.site-preloader').removeClass('site-active');
 		}, timeout);
 
 		setTimeout(function () {
@@ -50,29 +50,29 @@
 		},
 	});
 
-	$('.mry-scroll-hint').on('click', function () {
+	$('.site-scroll-hint').on('click', function () {
 		scrollbar.scrollTo(0, 550, 1800);
 	}); 
 
 	// portfolio filter
-	$('.mry-filter a').on('click', function () {
-		$('.mry-filter .mry-current').removeClass('mry-current');
-		$(this).addClass('mry-current');
+	$('.site-filter a').on('click', function () {
+		$('.site-filter .site-current').removeClass('site-current');
+		$(this).addClass('site-current');
 
 		var selector = $(this).data('filter');
-		$('.mry-masonry-grid').isotope({
+		$('.site-masonry-grid').isotope({
 			filter: selector
 		});
 		return false;
 	});
 
 	// masonry grid
-	$('.mry-masonry-grid').isotope({
+	$('.site-masonry-grid').isotope({
 		filter: '*',
-		itemSelector: '.mry-masonry-grid-item',
+		itemSelector: '.site-masonry-grid-item',
 		percentPosition: true,
 		masonry: {
-			columnWidth: '.mry-grid-sizer'
+			columnWidth: '.site-grid-sizer'
 		}
 	});
 
@@ -110,33 +110,33 @@
 	}
 
 	// menu
-	$('.mry-menu-btn').on('click', function () {
-		$('.mry-menu-btn , .mry-menu').toggleClass('mry-active');
+	$('.site-menu-btn').on('click', function () {
+		$('.site-menu-btn , .site-menu').toggleClass('site-active');
 	});
 
 	$('.menu-item').on('click', function () {
-		$(this).toggleClass('mry-active');
-		$(this).children('.sub-menu').toggleClass('mry-active');
+		$(this).toggleClass('site-active');
+		$(this).children('.sub-menu').toggleClass('site-active');
 	});
 
 	$(document).on('click', function (e) {
-		var el = '.mry-menu , .mry-menu-btn-frame , .mry-menu-btn';
+		var el = '.site-menu , .site-menu-btn-frame , .site-menu-btn';
 		if (jQuery(e.target).closest(el).length) return;
-		$('.mry-menu , .mry-menu-btn-frame , .mry-menu-btn').removeClass('mry-active');
+		$('.site-menu , .site-menu-btn-frame , .site-menu-btn').removeClass('site-active');
 	});
 
-	$('.mry-anima-link').on('click', function () {
-		$('.mry-menu , .mry-menu-btn-frame , .mry-menu-btn').removeClass('mry-active');
+	$('.site-anima-link').on('click', function () {
+		$('.site-menu , .site-menu-btn-frame , .site-menu-btn').removeClass('site-active');
 		$('.menu-item a').on('click', function () {
-			$(this).toggleClass('mry-active');
-			$(this).children('.sub-menu').toggleClass('mry-active');
+			$(this).toggleClass('site-active');
+			$(this).children('.sub-menu').toggleClass('site-active');
 		});
 	});
 
 	// cursor	
-	const element = document.querySelector(".mry-ball");
-	const target = document.querySelector(".mry-magnetic-link");
-	const text = document.querySelector(".mry-magnetic-object");
+	const element = document.querySelector(".site-ball");
+	const target = document.querySelector(".site-magnetic-link");
+	const text = document.querySelector(".site-magnetic-object");
 	class Cursor {
 		constructor(el, target, text) {
 			this.el = el;
@@ -153,7 +153,7 @@
 				top: e.clientY
 			};
 
-			document.querySelectorAll(".mry-magnetic-link").forEach(single => {
+			document.querySelectorAll(".site-magnetic-link").forEach(single => {
 				const triggerDistance = single.getBoundingClientRect().width / 2;
 
 				const targetPosition = {
@@ -173,7 +173,7 @@
 					distance.x * distance.x + distance.y * distance.y);
 
 				if (hypotenuse < triggerDistance) {
-					TweenMax.to(single.querySelector(".mry-magnetic-object"), 0.4, {
+					TweenMax.to(single.querySelector(".site-magnetic-object"), 0.4, {
 						x: -(Math.sin(angle) * hypotenuse / 2),
 						y: -(Math.cos(angle) * hypotenuse / 2),
 					});
@@ -183,7 +183,7 @@
 						top: cursorPosition.top - 20,
 					});
 
-					TweenMax.to(single.querySelector(".mry-magnetic-object"), 0.4, {
+					TweenMax.to(single.querySelector(".site-magnetic-object"), 0.4, {
 						x: 0,
 						y: 0
 					});
@@ -192,7 +192,7 @@
 		}
 	}
 
-	$(".mry-default-link").mouseenter(function (e) {
+	$(".site-default-link").mouseenter(function (e) {
 		TweenMax.to(element, 0.3, {
 			scale: .6,
 		});
@@ -201,7 +201,7 @@
 		});
 	});
 
-	$(".mry-default-link").mouseleave(function (e) {
+	$(".site-default-link").mouseleave(function (e) {
 		TweenMax.to(element, 0.3, {
 			scale: 1
 		});
@@ -210,7 +210,7 @@
 		});
 	});
 
-	$(".mry-magnetic-link").mouseenter(function (e) {
+	$(".site-magnetic-link").mouseenter(function (e) {
 		TweenMax.to(element, 0.3, {
 			scale: 1.4,
 		});
@@ -219,7 +219,7 @@
 		});
 	});
 
-	$(".mry-magnetic-link").mouseleave(function (e) {
+	$(".site-magnetic-link").mouseleave(function (e) {
 		TweenMax.to(element, 0.3, {
 			scale: 1
 		});
@@ -231,9 +231,9 @@
 	const cursor = new Cursor(element, target);
 
 	// sliders
-	var progressbar = $(".mry-slider-progress-bar");
+	var progressbar = $(".site-slider-progress-bar");
 
-	var swiper = new Swiper(".mry-main-slider", {
+	var swiper = new Swiper(".site-main-slider", {
 		autoplay: {
 			delay: 10000,
 			disableOnInteraction: false
@@ -247,11 +247,11 @@
 		keyboard: true,
 		speed: 1200,
 		navigation: {
-			nextEl: '.mry-button-next',
-			prevEl: '.mry-button-prev',
+			nextEl: '.site-button-next',
+			prevEl: '.site-button-prev',
 		},
 		pagination: {
-			el: '.mry-slider-pagination',
+			el: '.site-slider-pagination',
 			clickable: true,
 		},
 		on: {
@@ -272,13 +272,13 @@
 		}
 	});
 
-	var swiper = new Swiper(".mry-team-slider", {
+	var swiper = new Swiper(".site-team-slider", {
 		slidesPerView: 3,
 		spaceBetween: 30,
 		loop: true,
 		navigation: {
-			nextEl: '.mry-button-team-next',
-			prevEl: '.mry-button-team-prev',
+			nextEl: '.site-button-team-next',
+			prevEl: '.site-button-team-prev',
 		},
 		speed: 1200,
 		breakpoints: {
@@ -288,13 +288,13 @@
 		},
 	});
 
-	var swiper = new Swiper(".mry-testimonials-slider", {
+	var swiper = new Swiper(".site-testimonials-slider", {
 		slidesPerView: 1,
 		spaceBetween: 30,
 		loop: true,
 		navigation: {
-			nextEl: '.mry-button-testimonials-next',
-			prevEl: '.mry-button-testimonials-prev',
+			nextEl: '.site-button-testimonials-next',
+			prevEl: '.site-button-testimonials-prev',
 		},
 		speed: 1200,
 		breakpoints: {
@@ -304,13 +304,13 @@
 		},
 	});
 
-	var swiper = new Swiper(".mry-blog-slider", {
+	var swiper = new Swiper(".site-blog-slider", {
 		slidesPerView: 3,
 		spaceBetween: 60,
 		loop: true,
 		navigation: {
-			nextEl: '.mry-button-blog-next',
-			prevEl: '.mry-button-blog-prev',
+			nextEl: '.site-button-blog-next',
+			prevEl: '.site-button-blog-prev',
 		},
 		speed: 1200,
 		breakpoints: {
@@ -328,9 +328,9 @@
 		transform: 'translateY(50px) scale(.98)'
 	};
 
-	$('.mry-fo').css(fadestyles);
+	$('.site-fo').css(fadestyles);
 
-	var scrolAnimation1 = document.getElementsByClassName('mry-fo');
+	var scrolAnimation1 = document.getElementsByClassName('site-fo');
 
 	function createProjectScenes(object) {
 		for (let i = 0; i < object.length; i++) {
@@ -354,7 +354,7 @@
 	createProjectScenes(scrolAnimation1);
 	
 
-	var scrolAnimation3 = document.getElementsByClassName('mry-curtain');
+	var scrolAnimation3 = document.getElementsByClassName('site-curtain');
 
 	function createProjectScenes3(object3) {
 		for (let i = 0; i < object3.length; i++) {
@@ -405,10 +405,10 @@
 	}
 
 	// map lock/unlock
-	$(".mry-lock").on('click', function () {
-		$('.mry-map').toggleClass('mry-active');
-		$('.mry-lock').toggleClass('mry-active');
-		$('.mry-lock .fas').toggleClass('fa-unlock');
+	$(".site-lock").on('click', function () {
+		$('.site-map').toggleClass('site-active');
+		$('.site-lock').toggleClass('site-active');
+		$('.site-lock .fas').toggleClass('fa-unlock');
 	});
 
 	// reinit
@@ -429,12 +429,12 @@
 			var timeout = 1000
 			$('html').addClass('is-animating');
 
-			$(".mry-loader").animate({
+			$(".site-loader").animate({
 				width: "100%"
 			}, timeout);
 
 			setTimeout(function () {
-				$('.mry-preloader').removeClass('mry-active');
+				$('.site-preloader').removeClass('site-active');
 			}, timeout);
 
 			setTimeout(function () {
@@ -461,7 +461,7 @@
 			},
 		});
 
-		$('.mry-scroll-hint').on('click', function () {
+		$('.site-scroll-hint').on('click', function () {
 			scrollbar.scrollTo(0, 550, 1800);
 		});
 
@@ -474,23 +474,23 @@
 		}
 
 		// portfolio filter
-		$('.mry-filter a').on('click', function () {
-			$('.mry-filter .mry-current').removeClass('mry-current');
-			$(this).addClass('mry-current');
+		$('.site-filter a').on('click', function () {
+			$('.site-filter .site-current').removeClass('site-current');
+			$(this).addClass('site-current');
 
 			var selector = $(this).data('filter');
-			$('.mry-masonry-grid').isotope({
+			$('.site-masonry-grid').isotope({
 				filter: selector
 			});
 			return false;
 		});
 
-		$('.mry-masonry-grid').isotope({
+		$('.site-masonry-grid').isotope({
 			filter: '*',
-			itemSelector: '.mry-masonry-grid-item',
+			itemSelector: '.site-masonry-grid-item',
 			percentPosition: true,
 			masonry: {
-				columnWidth: '.mry-grid-sizer'
+				columnWidth: '.site-grid-sizer'
 			}
 		});
 
@@ -520,7 +520,7 @@
 
 		$.fancybox.defaults.hash = false;
 
-		$('.mry-smooth-scroll').on("click", function () {
+		$('.site-smooth-scroll').on("click", function () {
 			$('html, body').stop().animate({
 				scrollTop: $($(this).attr('href')).offset().top - 0
 			}, 1000);
@@ -528,21 +528,21 @@
 		});
 
 		$('.menu-item').on('click', function () {
-			$(this).toggleClass('mry-active');
-			$(this).children('.sub-menu').toggleClass('mry-active');
+			$(this).toggleClass('site-active');
+			$(this).children('.sub-menu').toggleClass('site-active');
 		});
 
 		$(document).on('click', function (e) {
-			var el = '.mry-menu , .mry-menu-btn-frame , .mry-menu-btn';
+			var el = '.site-menu , .site-menu-btn-frame , .site-menu-btn';
 			if (jQuery(e.target).closest(el).length) return;
-			$('.mry-menu , .mry-menu-btn-frame , .mry-menu-btn').removeClass('mry-active');
+			$('.site-menu , .site-menu-btn-frame , .site-menu-btn').removeClass('site-active');
 		});
 
-		$('.mry-anima-link').on('click', function () {
-			$('.mry-menu , .mry-menu-btn-frame , .mry-menu-btn').removeClass('mry-active');
+		$('.site-anima-link').on('click', function () {
+			$('.site-menu , .site-menu-btn-frame , .site-menu-btn').removeClass('site-active');
 			$('.menu-item a').on('click', function () {
-				$(this).toggleClass('mry-active');
-				$(this).children('.sub-menu').toggleClass('mry-active');
+				$(this).toggleClass('site-active');
+				$(this).children('.sub-menu').toggleClass('site-active');
 			});
 		});
 
@@ -552,7 +552,7 @@
 			}, 0);
 		}
 
-		$(".mry-default-link").mouseenter(function (e) {
+		$(".site-default-link").mouseenter(function (e) {
 			TweenMax.to(element, 0.3, {
 				scale: .6,
 			});
@@ -561,7 +561,7 @@
 			});
 		});
 
-		$(".mry-default-link").mouseleave(function (e) {
+		$(".site-default-link").mouseleave(function (e) {
 			TweenMax.to(element, 0.3, {
 				scale: 1
 			});
@@ -570,7 +570,7 @@
 			});
 		});
 
-		$(".mry-magnetic-link").mouseenter(function (e) {
+		$(".site-magnetic-link").mouseenter(function (e) {
 			TweenMax.to(element, 0.3, {
 				scale: 1.4,
 			});
@@ -579,7 +579,7 @@
 			});
 		});
 
-		$(".mry-magnetic-link").mouseleave(function (e) {
+		$(".site-magnetic-link").mouseleave(function (e) {
 			TweenMax.to(element, 0.3, {
 				scale: 1
 			});
@@ -588,9 +588,9 @@
 			});
 		});
 
-		var progressbar = $(".mry-slider-progress-bar");
+		var progressbar = $(".site-slider-progress-bar");
 
-		var swiper = new Swiper(".mry-main-slider", {
+		var swiper = new Swiper(".site-main-slider", {
 			autoplay: {
 				delay: 10000,
 				disableOnInteraction: false
@@ -605,11 +605,11 @@
 			keyboard: true,
 			speed: 1200,
 			navigation: {
-				nextEl: '.mry-button-next',
-				prevEl: '.mry-button-prev',
+				nextEl: '.site-button-next',
+				prevEl: '.site-button-prev',
 			},
 			pagination: {
-				el: '.mry-slider-pagination',
+				el: '.site-slider-pagination',
 				clickable: true,
 			},
 			on: {
@@ -630,13 +630,13 @@
 			}
 		});
 
-		var swiper = new Swiper(".mry-team-slider", {
+		var swiper = new Swiper(".site-team-slider", {
 			slidesPerView: 3,
 			spaceBetween: 30,
 			loop: true,
 			navigation: {
-				nextEl: '.mry-button-team-next',
-				prevEl: '.mry-button-team-prev',
+				nextEl: '.site-button-team-next',
+				prevEl: '.site-button-team-prev',
 			},
 			speed: 1200,
 			breakpoints: {
@@ -646,13 +646,13 @@
 			},
 		});
 
-		var swiper = new Swiper(".mry-testimonials-slider", {
+		var swiper = new Swiper(".site-testimonials-slider", {
 			slidesPerView: 1,
 			spaceBetween: 30,
 			loop: true,
 			navigation: {
-				nextEl: '.mry-button-testimonials-next',
-				prevEl: '.mry-button-testimonials-prev',
+				nextEl: '.site-button-testimonials-next',
+				prevEl: '.site-button-testimonials-prev',
 			},
 			speed: 1200,
 			breakpoints: {
@@ -662,13 +662,13 @@
 			},
 		});
 
-		var swiper = new Swiper(".mry-blog-slider", {
+		var swiper = new Swiper(".site-blog-slider", {
 			slidesPerView: 3,
 			spaceBetween: 60,
 			loop: true,
 			navigation: {
-				nextEl: '.mry-button-blog-next',
-				prevEl: '.mry-button-blog-prev',
+				nextEl: '.site-button-blog-next',
+				prevEl: '.site-button-blog-prev',
 			},
 			speed: 1200,
 			breakpoints: {
@@ -683,9 +683,9 @@
 			transform: 'translateY(50px)'
 		};
 
-		$('.mry-fo').css(fadestyles);
+		$('.site-fo').css(fadestyles);
 
-		var scrolAnimation1 = document.getElementsByClassName('mry-fo');
+		var scrolAnimation1 = document.getElementsByClassName('site-fo');
 
 		function createProjectScenes(object) {
 			for (let i = 0; i < object.length; i++) {
@@ -707,7 +707,7 @@
 
 		createProjectScenes(scrolAnimation1);
 
-		var scrolAnimation2 = document.getElementsByClassName('mry-scale-object');
+		var scrolAnimation2 = document.getElementsByClassName('site-scale-object');
 
 		function createProjectScenes2(object2) {
 			for (let i = 0; i < object2.length; i++) {
@@ -730,7 +730,7 @@
 
 		createProjectScenes2(scrolAnimation2);
 
-		var scrolAnimation3 = document.getElementsByClassName('mry-curtain');
+		var scrolAnimation3 = document.getElementsByClassName('site-curtain');
 
 		function createProjectScenes3(object3) {
 			for (let i = 0; i < object3.length; i++) {
@@ -780,10 +780,10 @@
 		}
 
 		// map lock/unlock
-		$(".mry-lock").on('click', function () {
-			$('.mry-map').toggleClass('mry-active');
-			$('.mry-lock').toggleClass('mry-active');
-			$('.mry-lock .fas').toggleClass('fa-unlock');
+		$(".site-lock").on('click', function () {
+			$('.site-map').toggleClass('site-active');
+			$('.site-lock').toggleClass('site-active');
+			$('.site-lock .fas').toggleClass('fa-unlock');
 		});
 
 	});
